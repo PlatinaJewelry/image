@@ -89,9 +89,9 @@ class Image implements ImageInterface
             $strategy = new $commandClassName;
             return $strategy->execute($this, ...$arguments);
         }
-//dd($method);
+
         // Если класс команды и стратегии не найдены, выбрасываем исключение
-//        throw new BadMethodCallException("Команда {$method}() не существует в " . static::class);
+        throw new BadMethodCallException("Команда {$method}() не существует в " . static::class);
     }
 
     /**
