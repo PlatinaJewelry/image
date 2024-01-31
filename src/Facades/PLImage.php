@@ -45,7 +45,6 @@ use Illuminate\Support\Facades\Facade;
  * @method backup(): Создает резервную копию изображения.
  * @method reset(): Восстанавливает изображение из резервной копии.
  * @method getSavePath(): Получить путь, где сохранили изображение
- *
  */
 class PLImage extends Facade
 {
