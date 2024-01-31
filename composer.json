@@ -1,16 +1,16 @@
 {
     "name": "platinajewelry/image",
-    "description": ":package_description",
+    "description": ":Обработка изображений laravel",
+    "keywords": ["image", "imagick", "laravel", "watermark", "thumbnail", "LaravelImage"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Author Name",
-            "email": "author@email.com",
-            "homepage": "http://author.com"
+            "name": "Smetanin Sergey",
+            "email": "sm.sergey.v@yandex.ru",
+            "homepage": "https://platina-kostroma.com/"
         }
     ],
     "homepage": "https://github.com/platinajewelry/image",
-    "keywords": ["Laravel", "Image"],
     "require": {
         "illuminate/support": "~9"
     },
@@ -37,5 +37,6 @@
                 "Image": "PlatinaJewelry\\Image\\Facades\\Image"
             }
         }
-    }
+    },
+    "minimum-stability": "stable"
 }

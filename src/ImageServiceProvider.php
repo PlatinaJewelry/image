@@ -7,76 +7,54 @@ use Illuminate\Support\ServiceProvider;
 class ImageServiceProvider extends ServiceProvider
 {
     /**
-     * Perform post-registration booting of services.
+     * Загрузка всех необходимых сервисов пакета.
      *
      * @return void
      */
     public function boot(): void
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'platinajewelry');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'platinajewelry');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
-        // Publishing is only necessary when using the CLI.
+        // Публикация необходима только при использовании командной строки (CLI).
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
         }
     }
 
     /**
-     * Register any package services.
+     * Регистрация всех сервисов пакета
      *
      * @return void
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/image.php', 'image');
+        // Объединение конфигурации пакета, если это необходимо.
+        $this->mergeConfigFrom(__DIR__ . '/../config/image.php', 'image');
 
-        // Register the service the package provides.
-        $this->app->singleton('image', function ($app) {
-            return new Image;
+        // Регистрация сервиса, предоставляемого пакетом.
+        $this->app->singleton('SMImage', function ($app) {
+            return new Image();
         });
     }
 
     /**
-     * Get the services provided by the provider.
+     * Получение списка сервисов, предоставляемых сервис-провайдером
      *
      * @return array
      */
     public function provides()
     {
-        return ['image'];
+        return ['Image'];
     }
 
     /**
-     * Console-specific booting.
+     * Дополнительные действия после регистрации сервисов в командной строке (CLI)
      *
      * @return void
      */
     protected function bootForConsole(): void
     {
-        // Publishing the configuration file.
+        // Публикация файла конфигурации.
         $this->publishes([
-            __DIR__.'/../config/image.php' => config_path('image.php'),
+            __DIR__ . '/../config/image.php' => config_path('image.php'),
         ], 'image.config');
-
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/platinajewelry'),
-        ], 'image.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/platinajewelry'),
-        ], 'image.assets');*/
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/platinajewelry'),
-        ], 'image.lang');*/
-
-        // Registering package commands.
-        // $this->commands([]);
     }
 }
