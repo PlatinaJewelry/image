@@ -1,6 +1,6 @@
 <?php
 
-namespace PlatinaJewelry\Image\Commands;
+namespace Platina\Image\Commands;
 
 use Imagick;
 use ImagickDraw;
@@ -8,8 +8,8 @@ use ImagickDrawException;
 use ImagickException;
 use ImagickPixel;
 use ImagickPixelException;
-use PlatinaJewelry\Image\Contracts\ImageInterface;
-use PlatinaJewelry\Image\Image;
+use Platina\Image\Contracts\ImageInterface;
+use Platina\Image\Image;
 
 /**
  * Команда для добавления текстового наложения на изображение.

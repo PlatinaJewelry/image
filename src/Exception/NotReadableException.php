@@ -1,6 +1,6 @@
 <?php
 
-namespace PlatinaJewelry\Image\Exception;
+namespace Platina\Image\Exception;
 
 use Nette\Utils\ImageException;
 

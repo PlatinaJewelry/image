@@ -1,6 +1,6 @@
 <?php
 
-namespace PlatinaJewelry\Image\Contracts;
+namespace Platina\Image\Contracts;
 
 /**
  * Интерфейс для адаптера, создающего объект изображения на основе предоставленных данных

@@ -1,20 +1,20 @@
 <?php
 
-namespace PlatinaJewelry\Image;
+namespace Platina\Image;
 
 use BadMethodCallException;
 use Imagick;
 use ImagickException;
-use PlatinaJewelry\Image\Contracts\ImageInterface;
-use PlatinaJewelry\Image\Exception\NotReadableException;
-use PlatinaJewelry\Image\Factories\ImageFactory;
+use Platina\Image\Contracts\ImageInterface;
+use Platina\Image\Exception\NotReadableException;
+use Platina\Image\Factories\ImageFactory;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 /**
  * Класс ImageFacade представляет изображение и методы для работы с ним.
  *
  * Class ImageFacade
- * @package PlatinaJewelry\Image
+ * @package Platina\Image
  */
 class Image implements ImageInterface
 {
@@ -81,7 +81,7 @@ class Image implements ImageInterface
         }
 
         // Формируем имя команды
-        $commandClassName = '\PlatinaJewelry\Image\Commands\\' . ucfirst($method) . 'Command';
+        $commandClassName = '\Platina\Image\Commands\\' . ucfirst($method) . 'Command';
 
         // Проверяем, существует ли класс стратегии
         if (class_exists($commandClassName)) {
@@ -89,9 +89,9 @@ class Image implements ImageInterface
             $strategy = new $commandClassName;
             return $strategy->execute($this, ...$arguments);
         }
-
+//dd($method);
         // Если класс команды и стратегии не найдены, выбрасываем исключение
-        throw new BadMethodCallException("Команда {$method}() не существует в " . static::class);
+//        throw new BadMethodCallException("Команда {$method}() не существует в " . static::class);
     }
 
     /**

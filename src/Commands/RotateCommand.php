@@ -1,10 +1,10 @@
 <?php
 
-namespace PlatinaJewelry\Image\Commands;
+namespace Platina\Image\Commands;
 
 use ImagickException;
-use PlatinaJewelry\Image\Contracts\ImageInterface;
-use PlatinaJewelry\Image\Image;
+use Platina\Image\Contracts\ImageInterface;
+use Platina\Image\Image;
 
 /**
  *Поворота изображения.

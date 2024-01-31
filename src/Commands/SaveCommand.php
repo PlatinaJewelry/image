@@ -1,11 +1,11 @@
 <?php
 
-namespace PlatinaJewelry\Image\Commands;
+namespace Platina\Image\Commands;
 
 use Illuminate\Support\Str;
 use ImagickException;
-use PlatinaJewelry\Image\Contracts\ImageInterface;
-use PlatinaJewelry\Image\Image;
+use Platina\Image\Contracts\ImageInterface;
+use Platina\Image\Image;
 
 /**
  * Команда для сохранения файла

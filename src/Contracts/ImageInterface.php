@@ -1,12 +1,12 @@
 <?php
 
-namespace PlatinaJewelry\Image\Contracts;
+namespace Platina\Image\Contracts;
 
 use Imagick;
 use ImagickException;
-use PlatinaJewelry\Image\Exception\NotReadableException;
+use Platina\Image\Exception\NotReadableException;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use PlatinaJewelry\Image\Image;
+use Platina\Image\Image;
 
 /**
  * Интерфейс для объекта изображения.

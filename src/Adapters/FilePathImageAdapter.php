@@ -1,14 +1,14 @@
 <?php
 
-namespace PlatinaJewelry\Image\Adapters;
+namespace Platina\Image\Adapters;
 
 use Imagick;
 use ImagickException;
 use ImagickPixel;
-use PlatinaJewelry\Image\Contracts\ImageAdapterInterface;
-use PlatinaJewelry\Image\Contracts\ImageInterface;
-use PlatinaJewelry\Image\Exception\NotReadableException;
-use PlatinaJewelry\Image\Image;
+use Platina\Image\Contracts\ImageAdapterInterface;
+use Platina\Image\Contracts\ImageInterface;
+use Platina\Image\Exception\NotReadableException;
+use Platina\Image\Image;
 
 /**
  * Адаптер для создания объекта изображения на основе локального файла

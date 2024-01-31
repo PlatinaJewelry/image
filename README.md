@@ -28,7 +28,7 @@
 Используйте [Composer](https://getcomposer.org/) для установки библиотеки:
 
 ```php
-composer require PlatinaJewelry/image
+composer require platinajewelry/image
 ```
 
 ```php
@@ -78,7 +78,7 @@ return [
 ## make() - Создает объект изображения.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Создает объект изображения.
@@ -90,11 +90,11 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method make(mixed $data): Image
 
 // Создание объекта изображения на основе локального файла.
-$img = SMImage::make('C:/file.jpg');
+$img = PLImage::make('C:/file.jpg');
 // Создание объекта изображения на основе данных, полученных по URL-адресу.
-$img = SMImage::make('https://file.jpg');
+$img = PLImage::make('https://file.jpg');
 // Создание объекта изображения на основе данных, предоставленных UploadedFile.
-$img = SMImage::make($request->file('file'));
+$img = PLImage::make($request->file('file'));
 
 /**
 * Свойства объекта изображения
@@ -127,7 +127,7 @@ $img = SMImage::make($request->file('file'));
 ## save() - Сохранение изображения.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
 /**
  * Выполняет сохранение изображения по указанному пути и с заданным качеством.
@@ -140,7 +140,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method save(string $path = "", int $quality = null): Image
 
 // Создание объекта изображения на основе данных, предоставленных UploadedFile.
-$img = SMImage::make($request->file('file'));
+$img = PLImage::make($request->file('file'));
 // Сохранить изображение по указанному пути test/file.jpg с качеством 90.
 $img->save('test/file.jpg', 90);
 // Сохранить изображение по указанному пути test/file.jpg с максимальным качеством (по умолчанию 100).
@@ -149,7 +149,7 @@ $img->save('test/file.jpg');
 $img->save();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->save('file.jpg');
 ```
 
@@ -168,7 +168,7 @@ SMImage::make($request->file('file'))
 ## resize() - Изменяет размер изображения сохраняя пропорции.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Изменяет размер изображения сохраняя пропорции.
@@ -181,7 +181,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method resize(?int $width, ?int $height): Image
 
 // Создание объекта изображения на основе данных, предоставленных UploadedFile.
-$img = SMImage::make($request->file('file'));
+$img = PLImage::make($request->file('file'));
 // Изменение размера изображения на ширину 500 и высоту 400 пикселей.
 $img->resize(500, 400);
 // Изменение размера изображения по ширине на 400 пикселей, сохраняя пропорции.
@@ -196,7 +196,7 @@ $img->getSavePath()
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->resize(500, null)
     ->save()
     ->destroy();
@@ -205,7 +205,7 @@ SMImage::make($request->file('file'))
 ## crop() - Обрезает изображение по заданным размерам.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Обрезает изображение по заданным размерам.
@@ -220,7 +220,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method crop(int $width, int $height, ?int $x = null, ?int $y = null): Image
 
 // Создание объекта изображения на основе данных, предоставленных UploadedFile.
-$img = SMImage::make($request->file('file'));
+$img = PLImage::make($request->file('file'));
 // Вызываем метод обрезки с указанными параметрами.
 $img->crop(500, 500, 25, 50);
 // Сохраняем.
@@ -231,7 +231,7 @@ $img->getSavePath()
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->crop(500, 500, 25, 50)
     ->save()
     ->destroy();
@@ -240,7 +240,7 @@ SMImage::make($request->file('file'))
 ## encode() - Кодирует изображение в определенный формат.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 use Imagick;
 
 /**
@@ -255,12 +255,12 @@ use Imagick;
 // Получаем список форматов с которыми можем работать.
 $imagickFormats = Imagick::queryFormats();
 
-$img = SMImage::make($request->file('file'));
+$img = PLImage::make($request->file('file'));
 // Сохраняем оригинальный размер.
 $img->save();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))->save();
+PLImage::make($request->file('file'))->save();
 
 // Кодирование в формат JPEG.
 $img->encode('JPEG');
@@ -297,7 +297,7 @@ $img->destroy();
 ## orientate() - Изменяет ориентацию изображения.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
 /**
  * Изменяет ориентацию изображения. Автоматически повернет изображение.
@@ -308,7 +308,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 Автоматически повернет изображение так, чтобы оно было правильно отображено.
 
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Изменяет ориентацию изображения
 $img->orientate();
 // Сохраняем.
@@ -319,7 +319,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->orientate()
     ->save()
     ->getSavePath()
@@ -329,7 +329,7 @@ SMImage::make($request->file('file'))
 ## rotate() - Поворачивает изображение на заданный угол.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
 /**
  * Поворачивает изображение на заданный угол.
@@ -341,7 +341,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method rotate(int $angle): Image
 
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Поворачиваем изображение.
 $img->rotate(45);
 // Сохраняем.
@@ -352,7 +352,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->rotate(45)
     ->save()
     ->getSavePath()
@@ -362,7 +362,7 @@ SMImage::make($request->file('file'))
 ## mirror() - Зеркально отражает изображение по горизонтали или вертикали.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Зеркально отражает изображение по горизонтали или вертикали.
@@ -374,7 +374,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method mirror(string $mode = 'h'): Image
     
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Зеркально отражаем изображение.
 $img->mirror();
 // Сохраняем.
@@ -385,7 +385,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->mirror()
     ->save()
     ->getSavePath()
@@ -395,7 +395,7 @@ SMImage::make($request->file('file'))
 ## blur() - Применяет размытие к изображению.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Применяет размытие к изображению.
@@ -406,7 +406,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method blur(float $radius = 5, float $sigma = 1): Image
     
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Размываем изображение.
 $img->blur();
 // Сохраняем.
@@ -417,7 +417,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->blur()
     ->save()
     ->getSavePath()
@@ -427,7 +427,7 @@ SMImage::make($request->file('file'))
 ## brightness() - Регулирует яркость изображения.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Регулирует яркость изображения.
@@ -437,7 +437,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method brightness(float $brightness): Image
     
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Регулируем яркость
 $img->brightness(-25);
 // Сохраняем.
@@ -448,7 +448,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->brightness(-25)
     ->save()
     ->getSavePath()
@@ -458,7 +458,7 @@ SMImage::make($request->file('file'))
 ## contrast() - Регулирует контраст изображения.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Регулирует контраст изображения.
@@ -470,7 +470,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method contrast(float $contrast): Image
     
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Регулируем контраст
 $img->contrast(25);
 // Сохраняем.
@@ -481,7 +481,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->contrast(25)
     ->save()
     ->getSavePath()
@@ -491,7 +491,7 @@ SMImage::make($request->file('file'))
 ## grayscale() - Преобразует изображение в черно-белый (оттенки серого).
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Преобразует изображение в черно-белый (оттенки серого).
@@ -501,7 +501,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method grayscale(float $contrast): Image
     
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Регулируем контраст
 $img->grayscale();
 // Сохраняем.
@@ -512,7 +512,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->grayscale()
     ->save()
     ->getSavePath()
@@ -522,7 +522,7 @@ SMImage::make($request->file('file'))
 ## sharpen() - Применяет эффект заточки к изображению.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Применяет эффект заточки к изображению.
@@ -536,7 +536,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method sharpen(float $amount = 2, float $radius = 1, float $sigma = 0.5): Image
     
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Регулируем контраст
 $img->sharpen(50, 25, 20.5);
 // Сохраняем.
@@ -547,7 +547,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make(
+PLImage::make(
     $request->file('file'))
     ->sharpen(50, 25, 20.5)
     ->save()
@@ -558,7 +558,7 @@ SMImage::make(
 ## textoverlay() - Добавляет текстовое наложение на изображение.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Добавляет текстовое наложение на изображение.
@@ -582,7 +582,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 ): Image
     
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 $text = 'Пример текста';
 $text2 = 'Пример текста 2';
 // Путь до шрифта
@@ -599,7 +599,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->textOverlay($text, 300, 300, $font, 44, '#FF0000')
     ->textOverlay($text2, 300, 350, $font, 44, '#FF0000')
     ->save()
@@ -610,7 +610,7 @@ SMImage::make($request->file('file'))
 ## watermark() - Добавляет водяной знак на изображение.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
 /**
  * Добавляет водяной знак на изображение.
@@ -625,7 +625,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method watermark(string $watermarkPath, int $x, int $y, int $opacity = 50): Image
     
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Путь к файлу водяного знака
 $watermarkPath = public_path('/watermark.png');
 // Добавление водяного знака
@@ -638,7 +638,7 @@ $img->getSavePath();
 $img->destroy();
 
 // Или более краткий вариант
-SMImage::make($request->file('file'))
+PLImage::make($request->file('file'))
     ->watermark($watermarkPath, 50, 100, 90)
     ->save()
     ->getSavePath()
@@ -667,9 +667,9 @@ SMImage::make($request->file('file'))
 ### Пример с командами backup() и reset()
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
-$img = SMImage::make($request->file('file'));
+$img = PLImage::make($request->file('file'));
 // Создаем резервную копию.
 $img->backup();
 // Теперь проводим какие-то изменения.
@@ -695,7 +695,7 @@ $img->destroy();
 ## response() - Создает HTTP-ответ на основе изображения.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
 /**
  * Создает HTTP-ответ на основе изображения. Полезно, когда нужно вернуть изображение как ответ на запрос.
@@ -707,7 +707,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method response(array $headers= []): Response
 
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Создаем HTTP-ответ с использованием метода response.
 $response = $img->response(['Content-Type' => 'image/jpeg']);
 ```
@@ -715,7 +715,7 @@ $response = $img->response(['Content-Type' => 'image/jpeg']);
 ## stream() - Выводит изображение в виде потока.
 
 ```php
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
  /**
  * Выводит изображение в виде потока. 
@@ -728,7 +728,7 @@ use Smetaniny\LaravelImage\Facades\SMImage;
 @method stream(array $headers = []): StreamedResponse
 
 // Создаем объект изображения.
-$img = SMImage::make($img);
+$img = PLImage::make($img);
 // Создаем HTTP-ответ с использованием метода stream.
 $response = $img->stream(['Content-Type' => 'image/jpeg']);
 ```
@@ -742,7 +742,7 @@ namespace App\Http\Controllers;
 use ImagickException;
 use Smetaniny\LaravelImage\Contracts\Image;
 use Smetaniny\LaravelImage\Image;
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
 class FlipCommand extends Image implements Image
 {
@@ -775,14 +775,14 @@ class FlipCommand extends Image implements Image
 
 # Применение пользовательской команды.
 namespace App\Http\Controllers;
-use Smetaniny\LaravelImage\Facades\SMImage;
+use Smetaniny\LaravelImage\Facades\PLImage;
 
 class MainController
 {
     public function index()
     {
         # Создание объекта изображения на основе данных, предоставленных UploadedFile.
-        $img = SMImage::make($request->file('file'));
+        $img = PLImage::make($request->file('file'));
         # Регистрируем команду.
         $img->registerCommand('flip', '\App\Http\Controllers\FlipCommand');
         # Применяем команду.

@@ -1,6 +1,6 @@
 <?php
 
-namespace PlatinaJewelry\Image\Contracts;
+namespace Platina\Image\Contracts;
 
 /**
  * Интерфейс для фабричных методов создания объектов

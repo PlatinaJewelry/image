@@ -1,15 +1,15 @@
 <?php
 
-namespace PlatinaJewelry\Image\Factories;
+namespace Platina\Image\Factories;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\UploadedFile;
-use PlatinaJewelry\Image\Adapters\FilePathImageAdapter;
-use PlatinaJewelry\Image\Adapters\UploadedFileImageAdapter;
-use PlatinaJewelry\Image\Adapters\UrlImageAdapter;
-use PlatinaJewelry\Image\Contracts\ImageFactoryInterface;
-use PlatinaJewelry\Image\Contracts\ImageInterface;
-use PlatinaJewelry\Image\Exception\NotReadableException;
+use Platina\Image\Adapters\FilePathImageAdapter;
+use Platina\Image\Adapters\UploadedFileImageAdapter;
+use Platina\Image\Adapters\UrlImageAdapter;
+use Platina\Image\Contracts\ImageFactoryInterface;
+use Platina\Image\Contracts\ImageInterface;
+use Platina\Image\Exception\NotReadableException;
 
 /**
  * Фабрика для создания экземпляра класса ImageFacade на основе предоставленных данных (файла, URL и т. д.)

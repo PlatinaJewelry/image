@@ -1,11 +1,11 @@
 <?php
 
-namespace PlatinaJewelry\Image\Commands;
+namespace Platina\Image\Commands;
 
 use Imagick;
 use ImagickException;
-use PlatinaJewelry\Image\Contracts\ImageInterface;
-use PlatinaJewelry\Image\Image;
+use Platina\Image\Contracts\ImageInterface;
+use Platina\Image\Image;
 
 /**
  * Команда для добавления водяного знака на изображение.

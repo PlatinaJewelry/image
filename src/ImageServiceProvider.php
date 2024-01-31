@@ -1,6 +1,6 @@
 <?php
 
-namespace PlatinaJewelry\Image;
+namespace Platina\Image;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -30,7 +30,7 @@ class ImageServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/image.php', 'image');
 
         // Регистрация сервиса, предоставляемого пакетом.
-        $this->app->singleton('SMImage', function ($app) {
+        $this->app->singleton('PLImage', function ($app) {
             return new Image();
         });
     }
@@ -42,7 +42,7 @@ class ImageServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['Image'];
+        return ['PLImage'];
     }
 
     /**

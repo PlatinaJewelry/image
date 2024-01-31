@@ -1,10 +1,10 @@
 <?php
 
-namespace PlatinaJewelry\Image\Commands;
+namespace Platina\Image\Commands;
 
 use Illuminate\Http\Response;
 use ImagickException;
-use PlatinaJewelry\Image\Contracts\ImageInterface;
+use Platina\Image\Contracts\ImageInterface;
 
 /**
  * Команда для возврата изображения как HTTP-ответ.
