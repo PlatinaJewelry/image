@@ -13,21 +13,21 @@
     "homepage": "https://github.com/platinajewelry/image",
     "autoload": {
         "psr-4": {
-            "PlatinaJewelry\\Image\\": "src/"
+            "Platina\\Image\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PlatinaJewelry\\Image\\Tests\\": "tests"
+            "Platina\\Image\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "PlatinaJewelry\\Image\\ImageServiceProvider"
+                "Platina\\Image\\ImageServiceProvider"
             ],
             "aliases": {
-                "Image": "PlatinaJewelry\\Image\\Facades\\Image"
+                "Image": "Platina\\Image\\Facades\\Image"
             }
         }
     },
