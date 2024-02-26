@@ -26,9 +26,9 @@ class SaveCommand extends Image implements ImageInterface
     public function execute(ImageInterface $image, string $path = "", int $quality = null): ImageInterface
     {
         // Получение данных из конфигурации
-        $baseSavePath = config('sm-laravel-image.base_path');
-        $defaultQuality = config('sm-laravel-image.default_quality');
-        $filenameFilter = config('sm-laravel-image.filename_filter');
+        $baseSavePath = config('image.base_path');
+        $defaultQuality = config('image.default_quality');
+        $filenameFilter = config('image.filename_filter');
 
         // Если значение $quality не передано явно, получаем его из конфигурации
         if ($quality === null) {

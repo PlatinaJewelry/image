@@ -5,7 +5,6 @@ namespace Platina\Image\Adapters;
 use Imagick;
 use ImagickException;
 use ImagickPixel;
-use Platina\Image\Contracts\ImageAdapterInterface;
 use Platina\Image\Contracts\ImageInterface;
 use Platina\Image\Exception\NotReadableException;
 use Platina\Image\Image;
@@ -15,7 +14,7 @@ use Platina\Image\Image;
  *
  * Class UrlImageAdapter
  */
-class UrlImageAdapter implements ImageAdapterInterface
+class UrlImageAdapter extends AbstractImageAdapter
 {
     protected string $url;
 
@@ -77,7 +76,7 @@ class UrlImageAdapter implements ImageAdapterInterface
             // Установка ресурса изображения Imagick в объект ImageFacade
             $image->setImageResource($imagick);
 
-            return $image;
+            return $this->convertToFormat($image);
         } catch (ImagickException $e) {
             // Обработка исключений Imagick, если возникли проблемы при обработке изображения
             throw new NotReadableException("Ошибка обработки изображения: " . $e->getMessage());

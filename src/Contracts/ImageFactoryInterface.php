@@ -14,7 +14,7 @@ interface ImageFactoryInterface
      *
      * @param mixed $data - Файл, URL или другой источник изображения
      *
-     * @return ImageInterface Созданный объект для работы с изображениемcd
+     * @return ImageInterface Созданный объект для работы с изображением
      */
     public static function createImage(mixed $data): ImageInterface;
 }

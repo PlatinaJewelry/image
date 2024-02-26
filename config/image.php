@@ -10,4 +10,16 @@ return [
     'filename_filter' => '/[^a-zA-ZА-я\d\-_]/u',
     // Следует ли применять Str::slug к имени файла
     'use_slug' => true,
+    // Массив не поддерживаемых форматов изображений (перекодирует в jpg)
+    'no_formats' => [
+        'GIF',
+        'TIFF',
+        'BMP',
+        'HEIF',
+        'HEIC',
+        'HEIF',
+        'RAW',
+        'NEF',
+        'HEF'
+    ]
 ];

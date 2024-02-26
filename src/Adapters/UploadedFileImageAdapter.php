@@ -7,7 +7,6 @@ use Illuminate\Http\UploadedFile;
 use Imagick;
 use ImagickException;
 use ImagickPixel;
-use Platina\Image\Contracts\ImageAdapterInterface;
 use Platina\Image\Contracts\ImageInterface;
 use Platina\Image\Exception\NotReadableException;
 use Platina\Image\Image;
@@ -17,7 +16,7 @@ use Platina\Image\Image;
  *
  * Class UploadedFileImageAdapter
  */
-class UploadedFileImageAdapter implements ImageAdapterInterface
+class UploadedFileImageAdapter extends AbstractImageAdapter
 {
     protected UploadedFile $file;
 
@@ -72,7 +71,7 @@ class UploadedFileImageAdapter implements ImageAdapterInterface
             // Установка изображения в объект изображения
             $image->setImageResource($imagick);
 
-            return $image;
+            return $this->convertToFormat($image);
         } catch (ImagickException $e) {
             // Обрабатываем исключения Imagick, если возникли проблемы при обработке изображения
             throw new NotReadableException("Ошибка обработки изображения: " . $e->getMessage());

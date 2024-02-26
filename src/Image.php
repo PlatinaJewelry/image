@@ -34,6 +34,7 @@ class Image implements ImageInterface
     protected string $extension = '';
     // Путь, где сохранили изображение.
     protected string $savePath = '';
+    // Массив пользовательских команд
     protected array $userCommands = [];
 
     /**
