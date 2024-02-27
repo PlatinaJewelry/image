@@ -10,6 +10,7 @@ use Platina\Image\Image;
 
 /**
  * Интерфейс для объекта изображения.
+ * @method encode(string $string)
  */
 interface ImageInterface
 {

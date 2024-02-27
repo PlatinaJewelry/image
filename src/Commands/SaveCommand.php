@@ -77,7 +77,7 @@ class SaveCommand extends Image implements ImageInterface
         $imagick->writeImage(storage_path($baseSavePath . '/' . $savePath));
 
         // Пишем путь, где сохранили изображение
-        $image->setSavePath($savePath);
+        $image->setSavePath($baseSavePath . '/' . $savePath);
 
         return $image;
     }
