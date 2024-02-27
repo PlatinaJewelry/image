@@ -45,6 +45,8 @@ use Illuminate\Support\Facades\Facade;
  * @method backup(): Создает резервную копию изображения.
  * @method reset(): Восстанавливает изображение из резервной копии.
  * @method getSavePath(): Получить путь, где сохранили изображение
+ * @method getImageWidth(): Геттер для получения значения ширины изображения
+ * @method getImageHeight(): Геттер для получения значения высоты изображения
  */
 class PLImage extends Facade
 {
@@ -57,5 +59,4 @@ class PLImage extends Facade
     {
         return 'PLImage';
     }
-
 }

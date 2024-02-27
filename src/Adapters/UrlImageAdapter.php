@@ -38,8 +38,6 @@ class UrlImageAdapter extends AbstractImageAdapter
     public function createImageFromData(): ImageInterface
     {
         try {
-            // Создание объекта ImageFacade, который будет представлять изображение
-            $image = new Image();
             // Создание объекта Imagick для обработки изображения
             $imagick = new Imagick();
 
@@ -61,22 +59,10 @@ class UrlImageAdapter extends AbstractImageAdapter
             // Получение имени файла из URL
             $urlInfo = parse_url($this->url);
             // Получение информации о пути URL
-            $pathInfo = pathinfo($urlInfo['path']);
+            $fileInfo = pathinfo($urlInfo['path']);
 
-            // Установка MIME-типа изображения
-            $image->setMime($imagick->getImageMimeType());
-            // Установка базового имени файла в объект изображения
-            $image->setBasename($pathInfo['basename']);
-            // Установка директории, имени файла и базового имени файла в объект ImageFacade
-            $image->setDirname($pathInfo['dirname']);
-            // Установка имени файла с расширением в объект изображения
-            $image->setFilename($pathInfo['filename']);
-            // Установка расширения файла
-            $image->setExtension($pathInfo['extension']);
-            // Установка ресурса изображения Imagick в объект ImageFacade
-            $image->setImageResource($imagick);
+            return  $this->loadImageFromResource($imagick, $fileInfo);
 
-            return $this->convertToFormat($image);
         } catch (ImagickException $e) {
             // Обработка исключений Imagick, если возникли проблемы при обработке изображения
             throw new NotReadableException("Ошибка обработки изображения: " . $e->getMessage());

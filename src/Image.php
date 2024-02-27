@@ -36,6 +36,46 @@ class Image implements ImageInterface
     protected string $savePath = '';
     // Массив пользовательских команд
     protected array $userCommands = [];
+    // Ширина изображения
+    protected int $width = 0;
+    // Высота изображения
+    protected int $height = 0;
+
+    /**
+     * Геттер для получения значения высоты изображения
+     *
+     * @return int
+     */
+    public function getImageHeight(): int {
+        return $this->height;
+    }
+
+    /**
+     * Сеттер для установки значения высоты изображения
+     *
+     * @param int $height
+     */
+    public function setImageHeight(int $height): void {
+        $this->height = $height;
+    }
+
+    /**
+     * Геттер для получения значения ширины изображения
+     *
+     * @return int
+     */
+    public function getImageWidth(): int {
+        return $this->width;
+    }
+
+    /**
+     * Сеттер для установки значения ширины изображения
+     *
+     * @param int $width
+     */
+    public function setImageWidth(int $width): void {
+        $this->width = $width;
+    }
 
     /**
      * Регистрирует пользовательскую команду.

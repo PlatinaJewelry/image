@@ -9,7 +9,6 @@ use ImagickException;
 use ImagickPixel;
 use Platina\Image\Contracts\ImageInterface;
 use Platina\Image\Exception\NotReadableException;
-use Platina\Image\Image;
 
 /**
  * Адаптер для создания объекта изображения на основе данных, предоставленных UploadedFile
@@ -41,8 +40,6 @@ class UploadedFileImageAdapter extends AbstractImageAdapter
     public function createImageFromData(): ImageInterface
     {
         try {
-            // Создание нового экземпляра объекта ImageFacade
-            $image = new Image();
             // Создание нового экземпляра объекта Imagick
             $imagick = new Imagick();
 
@@ -58,20 +55,12 @@ class UploadedFileImageAdapter extends AbstractImageAdapter
             // Получение имени файла из UploadedFile
             $originalName = pathinfo($this->file->getClientOriginalName(), PATHINFO_FILENAME);
 
-            // Установка MIME-типа изображения
-            $image->setMime($imagick->getImageMimeType());
-            // Установка базового имени файла в объект изображения
-            $image->setBasename(basename($this->file->path()));
-            // Установка пустой директории в объект изображения
-            $image->setDirname("");
-            // Установка имени файла
-            $image->setFilename($originalName);
-            // Установка расширения файла
-            $image->setExtension($extension);
-            // Установка изображения в объект изображения
-            $image->setImageResource($imagick);
-
-            return $this->convertToFormat($image);
+            return $this->loadImageFromResource($imagick, [
+                    'basename' => basename($this->file->path()),
+                    'dirname' =>  "",
+                    'filename' =>  $originalName,
+                    'extension' =>  $extension,
+                ]);
         } catch (ImagickException $e) {
             // Обрабатываем исключения Imagick, если возникли проблемы при обработке изображения
             throw new NotReadableException("Ошибка обработки изображения: " . $e->getMessage());

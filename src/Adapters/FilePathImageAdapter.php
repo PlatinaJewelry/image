@@ -7,7 +7,6 @@ use ImagickException;
 use ImagickPixel;
 use Platina\Image\Contracts\ImageInterface;
 use Platina\Image\Exception\NotReadableException;
-use Platina\Image\Image;
 
 /**
  * Адаптер для создания объекта изображения на основе локального файла
@@ -37,8 +36,6 @@ class FilePathImageAdapter extends AbstractImageAdapter
      */
     public function createImageFromData(): ImageInterface
     {
-        $image = new Image();
-
         try {
             // Создание объекта Imagick для работы с изображением
             $imagick = new Imagick();
@@ -49,24 +46,10 @@ class FilePathImageAdapter extends AbstractImageAdapter
             $imagick->setResolution(600, 600);
             // Чтение изображения из локального файла
             $imagick->readImage($this->filePath);
-
             // Получить информацию о файле
             $fileInfo = pathinfo($this->filePath);
 
-            // Установка MIME-типа изображения
-            $image->setMime($imagick->getImageMimeType());
-            // Установка базового имени файла в объект изображения
-            $image->setBasename($fileInfo['basename']);
-            // Установка директории, имени файла и базового имени файла в объект ImageFacade
-            $image->setDirname($fileInfo['dirname']);
-            // Установка имени файла с расширением в объект изображения
-            $image->setFilename($fileInfo['filename']);
-            // Установка расширения файла
-            $image->setExtension($fileInfo['extension']);
-            // Установка ресурса изображения Imagick в объект ImageFacade
-            $image->setImageResource($imagick);
-
-            return $this->convertToFormat($image);
+            return $this->loadImageFromResource($imagick, $fileInfo);
 
         } catch (ImagickException $e) {
             // Обрабатываем исключения Imagick, если возникли проблемы при обработке изображения
